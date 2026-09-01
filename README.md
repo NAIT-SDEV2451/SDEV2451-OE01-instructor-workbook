@@ -1,11 +1,11 @@
-# SDEV 2451 - Section E01 - Fall 2026
+# SDEV 2451 - Section OE01 - Fall 2026
 
 This contains all:
 - Examples done in class
 - Slides
 - Exercises that are not marked
 
-For the section E01, these will also be linked in the brightspace.
+For the section OE01, these will also be linked in the brightspace.
 
 # Tentative Due dates for everything that's due this semester
 
