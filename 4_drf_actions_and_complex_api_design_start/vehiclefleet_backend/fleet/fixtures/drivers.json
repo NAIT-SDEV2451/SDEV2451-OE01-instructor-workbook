@@ -1,0 +1,32 @@
+[
+  {
+    "model": "fleet.driver",
+    "pk": 1,
+    "fields": {
+      "name": "Jane Smith",
+      "license_number": "DL-99887",
+      "phone": "555-0100",
+      "email": "jane@example.com"
+    }
+  },
+  {
+    "model": "fleet.driver",
+    "pk": 2,
+    "fields": {
+      "name": "Bob Johnson",
+      "license_number": "DL-44521",
+      "phone": "555-0200",
+      "email": "bob@example.com"
+    }
+  },
+  {
+    "model": "fleet.driver",
+    "pk": 3,
+    "fields": {
+      "name": "Maria Garcia",
+      "license_number": "DL-77634",
+      "phone": "555-0300",
+      "email": "maria@example.com"
+    }
+  }
+]

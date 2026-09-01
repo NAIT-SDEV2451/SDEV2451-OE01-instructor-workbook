@@ -1,0 +1,229 @@
+[
+  {
+    "model": "event_tickets.venue",
+    "pk": 1,
+    "fields": {
+      "name": "Madison Square Garden",
+      "address": "4 Pennsylvania Plaza, New York, NY 10001",
+      "owner": 100
+    }
+  },
+  {
+    "model": "event_tickets.venue",
+    "pk": 2,
+    "fields": {
+      "name": "Chase Center",
+      "address": "1 Warriors Way, San Francisco, CA 94158",
+      "owner": 101
+    }
+  },
+  {
+    "model": "event_tickets.venue",
+    "pk": 3,
+    "fields": {
+      "name": "Crypto.com Arena",
+      "address": "1111 S Figueroa St, Los Angeles, CA 90015",
+      "owner": 100
+    }
+  },
+  {
+    "model": "event_tickets.event",
+    "pk": 1,
+    "fields": {
+      "name": "Summer Jazz Festival",
+      "date_time": "2026-07-15T19:00:00Z",
+      "venue": 1,
+      "organizer": 100
+    }
+  },
+  {
+    "model": "event_tickets.event",
+    "pk": 2,
+    "fields": {
+      "name": "Rock Legends Reunion",
+      "date_time": "2026-08-20T20:00:00Z",
+      "venue": 2,
+      "organizer": 101
+    }
+  },
+  {
+    "model": "event_tickets.event",
+    "pk": 3,
+    "fields": {
+      "name": "Electronic Music Night",
+      "date_time": "2026-09-05T21:00:00Z",
+      "venue": 3,
+      "organizer": 100
+    }
+  },
+  {
+    "model": "event_tickets.event",
+    "pk": 4,
+    "fields": {
+      "name": "Stand-Up Comedy Showcase",
+      "date_time": "2026-10-10T19:30:00Z",
+      "venue": 1,
+      "organizer": 100
+    }
+  },
+  {
+    "model": "event_tickets.event",
+    "pk": 5,
+    "fields": {
+      "name": "Pop Stars Live",
+      "date_time": "2026-11-22T18:00:00Z",
+      "venue": 2,
+      "organizer": 101
+    }
+  },
+  {
+    "model": "event_tickets.event",
+    "pk": 6,
+    "fields": {
+      "name": "Classical Symphony Evening",
+      "date_time": "2026-12-15T20:00:00Z",
+      "venue": 3,
+      "organizer": 101
+    }
+  },
+  {
+    "model": "event_tickets.event",
+    "pk": 7,
+    "fields": {
+      "name": "Hip Hop Showcase",
+      "date_time": "2027-01-30T19:00:00Z",
+      "venue": 1,
+      "organizer": 100
+    }
+  },
+  {
+    "model": "event_tickets.event",
+    "pk": 8,
+    "fields": {
+      "name": "Valentine's Day Concert",
+      "date_time": "2027-02-14T22:00:00Z",
+      "venue": 2,
+      "organizer": 101
+    }
+  },
+  {
+    "model": "event_tickets.tickettier",
+    "pk": 1,
+    "fields": { "name": "Floor", "price": "150.00", "event": 1 }
+  },
+  {
+    "model": "event_tickets.tickettier",
+    "pk": 2,
+    "fields": { "name": "Lower Bowl", "price": "85.00", "event": 1 }
+  },
+  {
+    "model": "event_tickets.tickettier",
+    "pk": 3,
+    "fields": { "name": "Upper Bowl", "price": "45.00", "event": 1 }
+  },
+  {
+    "model": "event_tickets.tickettier",
+    "pk": 4,
+    "fields": { "name": "Floor", "price": "200.00", "event": 2 }
+  },
+  {
+    "model": "event_tickets.tickettier",
+    "pk": 5,
+    "fields": { "name": "Lower Bowl", "price": "120.00", "event": 2 }
+  },
+  {
+    "model": "event_tickets.tickettier",
+    "pk": 6,
+    "fields": { "name": "Upper Bowl", "price": "65.00", "event": 2 }
+  },
+  {
+    "model": "event_tickets.tickettier",
+    "pk": 7,
+    "fields": { "name": "Floor", "price": "175.00", "event": 3 }
+  },
+  {
+    "model": "event_tickets.tickettier",
+    "pk": 8,
+    "fields": { "name": "Lower Bowl", "price": "95.00", "event": 3 }
+  },
+  {
+    "model": "event_tickets.tickettier",
+    "pk": 9,
+    "fields": { "name": "Upper Bowl", "price": "50.00", "event": 3 }
+  },
+  {
+    "model": "event_tickets.tickettier",
+    "pk": 10,
+    "fields": { "name": "Floor", "price": "90.00", "event": 4 }
+  },
+  {
+    "model": "event_tickets.tickettier",
+    "pk": 11,
+    "fields": { "name": "Lower Bowl", "price": "60.00", "event": 4 }
+  },
+  {
+    "model": "event_tickets.tickettier",
+    "pk": 12,
+    "fields": { "name": "Upper Bowl", "price": "35.00", "event": 4 }
+  },
+  {
+    "model": "event_tickets.tickettier",
+    "pk": 13,
+    "fields": { "name": "Floor", "price": "225.00", "event": 5 }
+  },
+  {
+    "model": "event_tickets.tickettier",
+    "pk": 14,
+    "fields": { "name": "Lower Bowl", "price": "140.00", "event": 5 }
+  },
+  {
+    "model": "event_tickets.tickettier",
+    "pk": 15,
+    "fields": { "name": "Upper Bowl", "price": "75.00", "event": 5 }
+  },
+  {
+    "model": "event_tickets.tickettier",
+    "pk": 16,
+    "fields": { "name": "Floor", "price": "160.00", "event": 6 }
+  },
+  {
+    "model": "event_tickets.tickettier",
+    "pk": 17,
+    "fields": { "name": "Lower Bowl", "price": "100.00", "event": 6 }
+  },
+  {
+    "model": "event_tickets.tickettier",
+    "pk": 18,
+    "fields": { "name": "Upper Bowl", "price": "55.00", "event": 6 }
+  },
+  {
+    "model": "event_tickets.tickettier",
+    "pk": 19,
+    "fields": { "name": "Floor", "price": "185.00", "event": 7 }
+  },
+  {
+    "model": "event_tickets.tickettier",
+    "pk": 20,
+    "fields": { "name": "Lower Bowl", "price": "110.00", "event": 7 }
+  },
+  {
+    "model": "event_tickets.tickettier",
+    "pk": 21,
+    "fields": { "name": "Upper Bowl", "price": "60.00", "event": 7 }
+  },
+  {
+    "model": "event_tickets.tickettier",
+    "pk": 22,
+    "fields": { "name": "Floor", "price": "250.00", "event": 8 }
+  },
+  {
+    "model": "event_tickets.tickettier",
+    "pk": 23,
+    "fields": { "name": "Lower Bowl", "price": "150.00", "event": 8 }
+  },
+  {
+    "model": "event_tickets.tickettier",
+    "pk": 24,
+    "fields": { "name": "Upper Bowl", "price": "80.00", "event": 8 }
+  }
+]

@@ -1,0 +1,32 @@
+[
+  {
+    "model": "fleet.vehicle",
+    "pk": 1,
+    "fields": {
+      "make": "Ford",
+      "model": "Transit",
+      "year": 2022,
+      "license_plate": "ABC-1234"
+    }
+  },
+  {
+    "model": "fleet.vehicle",
+    "pk": 2,
+    "fields": {
+      "make": "Toyota",
+      "model": "HiAce",
+      "year": 2021,
+      "license_plate": "XYZ-5678"
+    }
+  },
+  {
+    "model": "fleet.vehicle",
+    "pk": 3,
+    "fields": {
+      "make": "Mercedes",
+      "model": "Sprinter",
+      "year": 2020,
+      "license_plate": "DEF-9012"
+    }
+  }
+]

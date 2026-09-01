@@ -1,0 +1,158 @@
+[
+  {
+    "model": "fleet.trip",
+    "pk": 6,
+    "fields": {
+      "vehicle": 1,
+      "driver": 3,
+      "start_location": "Central Depot",
+      "end_location": "East Industrial Park",
+      "start_time": "2026-01-06T07:30:00Z",
+      "end_time": "2026-01-06T08:15:00Z",
+      "distance": "18.40"
+    }
+  },
+  {
+    "model": "fleet.trip",
+    "pk": 7,
+    "fields": {
+      "vehicle": 3,
+      "driver": 1,
+      "start_location": "Port Logistics Hub",
+      "end_location": "Regional Distribution Centre",
+      "start_time": "2026-01-14T05:00:00Z",
+      "end_time": "2026-01-14T07:50:00Z",
+      "distance": "142.30"
+    }
+  },
+  {
+    "model": "fleet.trip",
+    "pk": 8,
+    "fields": {
+      "vehicle": 2,
+      "driver": 2,
+      "start_location": "Warehouse A",
+      "end_location": "Northside Retail Park",
+      "start_time": "2026-01-22T09:00:00Z",
+      "end_time": "2026-01-22T09:35:00Z",
+      "distance": "9.80"
+    }
+  },
+  {
+    "model": "fleet.trip",
+    "pk": 9,
+    "fields": {
+      "vehicle": 1,
+      "driver": 2,
+      "start_location": "Airport Freight Terminal",
+      "end_location": "Cold Storage Facility",
+      "start_time": "2026-02-03T04:45:00Z",
+      "end_time": "2026-02-03T07:30:00Z",
+      "distance": "167.90"
+    }
+  },
+  {
+    "model": "fleet.trip",
+    "pk": 10,
+    "fields": {
+      "vehicle": 3,
+      "driver": 3,
+      "start_location": "City Hub",
+      "end_location": "Suburban Depot",
+      "start_time": "2026-02-17T11:00:00Z",
+      "end_time": "2026-02-17T11:45:00Z",
+      "distance": "22.10"
+    }
+  },
+  {
+    "model": "fleet.trip",
+    "pk": 11,
+    "fields": {
+      "vehicle": 2,
+      "driver": 1,
+      "start_location": "South Distribution Centre",
+      "end_location": "Port Logistics Hub",
+      "start_time": "2026-03-05T06:00:00Z",
+      "end_time": "2026-03-05T09:15:00Z",
+      "distance": "193.60"
+    }
+  },
+  {
+    "model": "fleet.trip",
+    "pk": 12,
+    "fields": {
+      "vehicle": 1,
+      "driver": 3,
+      "start_location": "Downtown Depot",
+      "end_location": "West Terminal",
+      "start_time": "2026-03-19T13:30:00Z",
+      "end_time": "2026-03-19T14:05:00Z",
+      "distance": "11.50"
+    }
+  },
+  {
+    "model": "fleet.trip",
+    "pk": 13,
+    "fields": {
+      "vehicle": 3,
+      "driver": 2,
+      "start_location": "East Industrial Park",
+      "end_location": "Airport Freight Terminal",
+      "start_time": "2026-04-02T08:00:00Z",
+      "end_time": "2026-04-02T09:20:00Z",
+      "distance": "57.70"
+    }
+  },
+  {
+    "model": "fleet.trip",
+    "pk": 14,
+    "fields": {
+      "vehicle": 2,
+      "driver": 3,
+      "start_location": "Regional Distribution Centre",
+      "end_location": "Central Depot",
+      "start_time": "2026-04-11T05:30:00Z",
+      "end_time": "2026-04-11T08:00:00Z",
+      "distance": "134.20"
+    }
+  },
+  {
+    "model": "fleet.trip",
+    "pk": 15,
+    "fields": {
+      "vehicle": 1,
+      "driver": 1,
+      "start_location": "Northside Retail Park",
+      "end_location": "Warehouse B",
+      "start_time": "2026-04-24T14:00:00Z",
+      "end_time": "2026-04-24T14:25:00Z",
+      "distance": "6.30"
+    }
+  },
+  {
+    "model": "fleet.trip",
+    "pk": 16,
+    "fields": {
+      "vehicle": 3,
+      "driver": 1,
+      "start_location": "Cold Storage Facility",
+      "end_location": "South Distribution Centre",
+      "start_time": "2026-05-20T07:00:00Z",
+      "end_time": "2026-05-20T10:10:00Z",
+      "distance": "178.40"
+    }
+  },
+  {
+    "model": "fleet.trip",
+    "pk": 17,
+    "fields": {
+      "vehicle": 2,
+      "driver": 2,
+      "start_location": "West Terminal",
+      "end_location": "Port Logistics Hub",
+      "start_time": "2026-06-02T09:30:00Z",
+      "end_time": null,
+      "distance": null
+    }
+  }
+]

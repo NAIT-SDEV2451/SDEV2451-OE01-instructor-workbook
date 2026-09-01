@@ -1,0 +1,67 @@
+[
+  {
+    "model": "fleet.trip",
+    "pk": 1,
+    "fields": {
+      "vehicle": 1,
+      "driver": 1,
+      "start_location": "Warehouse A",
+      "end_location": "Downtown Depot",
+      "start_time": "2026-05-01T08:00:00Z",
+      "end_time": "2026-05-01T09:30:00Z",
+      "distance": "45.20"
+    }
+  },
+  {
+    "model": "fleet.trip",
+    "pk": 2,
+    "fields": {
+      "vehicle": 2,
+      "driver": 2,
+      "start_location": "City Hub",
+      "end_location": "Airport Terminal B",
+      "start_time": "2026-05-02T07:00:00Z",
+      "end_time": "2026-05-02T08:15:00Z",
+      "distance": "32.80"
+    }
+  },
+  {
+    "model": "fleet.trip",
+    "pk": 3,
+    "fields": {
+      "vehicle": 3,
+      "driver": 3,
+      "start_location": "North Yard",
+      "end_location": "South Distribution Centre",
+      "start_time": "2026-05-03T06:30:00Z",
+      "end_time": "2026-05-03T08:45:00Z",
+      "distance": "78.50"
+    }
+  },
+  {
+    "model": "fleet.trip",
+    "pk": 4,
+    "fields": {
+      "vehicle": 1,
+      "driver": 2,
+      "start_location": "Downtown Depot",
+      "end_location": "Warehouse B",
+      "start_time": "2026-05-04T10:00:00Z",
+      "end_time": "2026-05-04T11:10:00Z",
+      "distance": "28.60"
+    }
+  },
+  {
+    "model": "fleet.trip",
+    "pk": 5,
+    "fields": {
+      "vehicle": 2,
+      "driver": 1,
+      "start_location": "Airport Terminal B",
+      "end_location": "City Hub",
+      "start_time": "2026-05-05T14:00:00Z",
+      "end_time": null,
+      "distance": null
+    }
+  }
+]
