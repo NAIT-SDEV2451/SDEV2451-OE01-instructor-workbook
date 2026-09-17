@@ -15,7 +15,24 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    # Brings in our DRF
+    "rest_framework",
+    "django_filters",
+    # Flees App
+    "fleet",
 ]
+
+
+REST_FRAMEWORK = {
+    "DEFAULT_FILTER_BACKENDS": [
+        "django_filters.rest_framework.DjangoFilterBackend",
+    ],
+    "DEFAULT_PERMISSION_CLASSES": [
+        "rest_framework.permissions.AllowAny",
+    ],
+}
+
+
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
