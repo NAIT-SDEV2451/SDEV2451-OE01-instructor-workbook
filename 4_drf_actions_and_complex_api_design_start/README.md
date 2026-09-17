@@ -135,30 +135,30 @@ Let's talk about what this code is doing.
 
 ---
 
-### 4. Update `useVehicles` and `useDrivers` to accept search and expose an invalidate function
+### 4. Update `useVehicles` and `useDrivers` to accept search
 
 The hooks need to accept a search term, pass it to the API function, and tell React Query to cache each unique search result separately.
 
 ```js
 // src/hooks/useVehicles.js
 
-import { useQuery, useQueryClient } from '@tanstack/react-query'
-import { fetchVehicles } from '../api/fleet'
+import { useQuery } from "@tanstack/react-query";
+import { fetchVehicles } from "../api/fleet";
 
-export function useVehicles(search = '') {
-  const queryClient = useQueryClient()
-
-  const { data: vehicles = [], isLoading, isError, error } = useQuery({
-    queryKey: ['vehicles', search],
+export function useVehicles(search = "") {
+  const {
+    data: vehicles = [],
+    isLoading,
+    isError,
+    error,
+  } = useQuery({
+    queryKey: ["vehicles", search],
     queryFn: () => fetchVehicles(search),
-  })
+  });
 
-  function invalidate() {
-    queryClient.invalidateQueries({ queryKey: ['vehicles', search] })
-  }
-
-  return { vehicles, isLoading, isError, error, invalidate }
+  return { vehicles, isLoading, isError, error };
 }
+
 ```
 
 `useDrivers` follows the exact same pattern — swap `vehicles` for `drivers` and `fetchVehicles` for `fetchDrivers`.
@@ -166,14 +166,12 @@ export function useVehicles(search = '') {
 Let's talk about what this code is doing.
 - `queryKey: ['vehicles', search]` includes the search term so React Query caches `['vehicles', 'ford']` and `['vehicles', 'toyota']` as separate entries. Switching between two terms that were already fetched returns the cached result instantly.
 - `queryFn: () => fetchVehicles(search)` uses an arrow function so the current value of `search` is captured in the closure at call time, rather than being evaluated when the hook mounts.
-- `useQueryClient()` gives access to the shared cache. `invalidateQueries` marks the current search entry as stale, which triggers a background re-fetch the next time the data is needed.
-- The hook returns `invalidate` so the page component can call it directly — the hook itself does not decide when to invalidate.
 
 ---
 
 ### 5. Add search inputs and `useEffect` to `src/pages/VehiclesAndDriversPage.jsx`
 
-The search term state lives in the page. A `useEffect` watches each term and calls `invalidate` when it changes, triggering a fresh fetch with the new value.
+The search term state lives in the page.
 
 ```jsx
 // src/pages/VehiclesAndDriversPage.jsx
@@ -182,20 +180,11 @@ import { useState, useEffect } from 'react'
 // ... other imports ...
 
 function VehiclesAndDriversPage() {
-  const [vehicleSearch, setVehicleSearch] = useState('')
-  const [driverSearch, setDriverSearch] = useState('')
+  const [vehicleSearch, setVehicleSearch] = useState("");
+  const [driverSearch, setDriverSearch] = useState("");
 
-  const { vehicles, isLoading: loadingVehicles, invalidate: invalidateVehicles } = useVehicles(vehicleSearch)
-  const { drivers, isLoading: loadingDrivers, invalidate: invalidateDrivers } = useDrivers(driverSearch)
-
-  useEffect(() => {
-    invalidateVehicles()
-  }, [vehicleSearch])
-
-  useEffect(() => {
-    invalidateDrivers()
-  }, [driverSearch])
-
+  const { vehicles, isLoading: loadingVehicles } = useVehicles(vehicleSearch);
+  const { drivers, isLoading: loadingDrivers } = useDrivers(driverSearch);
   return (
     <div className="flex flex-col gap-8">
       <section>
@@ -220,7 +209,6 @@ function VehiclesAndDriversPage() {
 
 Let's talk about what this code is doing.
 - Each section has its own independent `useState` — `vehicleSearch` and `driverSearch` — so typing in one input does not affect the other.
-- `useEffect(() => { invalidateVehicles() }, [vehicleSearch])` runs once after each render in which `vehicleSearch` changed. The empty-dependency case (initial render) also fires, which is harmless — invalidating a fresh query just causes an immediate background refetch.
 - `value={vehicleSearch}` and `onChange={setVehicleSearch}` make the input controlled. React is the single source of truth for its value.
 - The DRF `SearchFilter` performs a case-insensitive `icontains` across `make`, `model`, and `license_plate` — typing `"ford"` matches `"Ford Transit"` without needing exact casing.
 
@@ -383,7 +371,7 @@ Let's talk about what this code is doing.
 
 ---
 
-### 9. Cache geocoordinates on the Trip model and add a `map` detail action
+## Extension - Time permitting / If you want to go the extra mile
 
 Every call to an external geocoding API costs time (and on paid tiers, money). Rather than hitting the API on every request, we store the coordinates on the `Trip` row the first time they are resolved and return the cached values on all subsequent requests.
 
@@ -563,7 +551,6 @@ In this example we learned about:
 - **`Avg` and `TruncWeek` aggregations** — Django's ORM can compute averages and group by truncated time periods (`TruncWeek`, `TruncMonth`) in a single SQL query
 - **Rolling time windows** — `timezone.now() - timedelta(weeks=26)` creates a dynamic window; always use `timezone.now()` (not `datetime.now()`) when `USE_TZ = True`
 - **Dynamic `queryKey` for per-search caching** — including the search term in `queryKey: ['vehicles', search]` gives each unique search its own cache entry; re-visiting a previous search returns the cached result instantly
-- **`invalidate` + `useEffect` pattern** — exposing `invalidate` from a hook and calling it from a `useEffect` in the page is an explicit way to force a re-fetch when dependent state changes
 - **`encodeURIComponent`** — always encode user-supplied strings before embedding them in a URL to handle spaces and special characters safely
 - **Config arrays for repeated components** — defining card data as `STAT_CARDS = [{ key, label, color }]` outside the component body keeps the JSX concise and makes adding or reordering cards a one-line change
 - **`value ?? fallback`** — nullish coalescing (`??`) renders a fallback only for `null`/`undefined`, not for falsy values like `0`; use it in display components to show loading state without hiding valid zero values
