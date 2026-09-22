@@ -32,6 +32,10 @@ class TripSerializer(serializers.ModelSerializer):
             "start_time",
             "end_time",
             "distance",
+            "start_lat",
+            "start_lng",
+            "end_lat",
+            "end_lng",
         ]
         extra_kwargs = {
             "vehicle": {"write_only": True},

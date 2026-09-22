@@ -29,6 +29,10 @@ class Trip(models.Model):
     start_time = models.DateTimeField()
     end_time = models.DateTimeField(null=True, blank=True)
     distance = models.DecimalField(max_digits=8, decimal_places=2, null=True, blank=True)
+    start_lat = models.DecimalField(max_digits=9, decimal_places=6, null=True, blank=True)
+    start_lng = models.DecimalField(max_digits=9, decimal_places=6, null=True, blank=True)
+    end_lat = models.DecimalField(max_digits=9, decimal_places=6, null=True, blank=True)
+    end_lng = models.DecimalField(max_digits=9, decimal_places=6, null=True, blank=True)
 
     def __str__(self):
         return f"Trip {self.id}: {self.start_location} → {self.end_location}"

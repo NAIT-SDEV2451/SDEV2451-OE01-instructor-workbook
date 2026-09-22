@@ -1,13 +1,21 @@
 const BASE_URL = 'http://localhost:8000/api/v1'
 
-export async function fetchVehicles() {
-  const response = await fetch(`${BASE_URL}/vehicles/`)
+export async function fetchVehicles(search = "") {
+  const url = search
+    ? `${BASE_URL}/vehicles/?search=${encodeURIComponent(search)}`
+    : `${BASE_URL}/vehicles/`;
+
+  const response = await fetch(url)
   if (!response.ok) throw new Error('Failed to fetch vehicles')
   return response.json()
 }
 
-export async function fetchDrivers() {
-  const response = await fetch(`${BASE_URL}/drivers/`)
+export async function fetchDrivers(search = "") {
+  const url = search
+    ? `${BASE_URL}/drivers/?search=${encodeURIComponent(search)}`
+    : `${BASE_URL}/drivers/`;
+
+  const response = await fetch(url)
   if (!response.ok) throw new Error('Failed to fetch drivers')
   return response.json()
 }
@@ -25,5 +33,11 @@ export async function createTrip(data) {
     body: JSON.stringify(data),
   })
   if (!response.ok) throw new Error('Failed to create trip')
+  return response.json()
+}
+
+export async function fetchStats() {
+  const response = await fetch(`${BASE_URL}/stats/`)
+  if (!response.ok) throw new Error('Failed to fetch stats')
   return response.json()
 }

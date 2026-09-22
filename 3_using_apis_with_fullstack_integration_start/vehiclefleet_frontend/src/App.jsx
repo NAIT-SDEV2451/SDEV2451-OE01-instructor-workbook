@@ -2,9 +2,14 @@ import { BrowserRouter, Routes, Route, NavLink } from 'react-router-dom'
 import VehiclesAndDriversPage from './pages/VehiclesAndDriversPage'
 import TripsPage from './pages/TripsPage'
 import CreateTripPage from './pages/CreateTripPage'
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+
+
+const queryClient = new QueryClient()
 
 function App() {
   return (
+    <QueryClientProvider client={queryClient}>
     <BrowserRouter>
       <div className="min-h-screen bg-base-200">
         <nav className="navbar bg-base-100 shadow px-6">
@@ -50,6 +55,7 @@ function App() {
         </main>
       </div>
     </BrowserRouter>
+    </QueryClientProvider>
   )
 }
 
