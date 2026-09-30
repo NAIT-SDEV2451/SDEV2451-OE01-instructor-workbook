@@ -1,16 +1,11 @@
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts'
-
-function formatWeek(isoDate) {
-    const date = new Date(isoDate)
-    return date.toLocaleDateString('en-CA', { month: 'short', day: '2-digit' })
-}
+import { formatWeek } from '../utils/dateUtils'
 
 function AverageDistanceChart({ data }) {
     const chartData = data.map((entry) => ({
         week: formatWeek(entry.week),
         avg_distance: entry.avg_distance,
     }))
-
 
     return (
         <div className="card bg-base-100 shadow-md">

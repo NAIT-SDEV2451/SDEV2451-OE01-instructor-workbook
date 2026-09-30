@@ -3,6 +3,7 @@ import { useTrips } from '../hooks/useTrips'
 import { useStats } from '../hooks/useStats'
 import StatCard from '../components/StatCard'
 import AverageDistanceChart from '../components/AverageDistanceChart'
+import TripsPerWeekChart from '../components/TripsPerWeekChart'
 
 const STAT_CARDS = [
   { key: 'total_vehicles', label: 'Total Vehicles', color: 'bg-primary text-primary-content' },
@@ -25,6 +26,10 @@ function TripsPage() {
 
       {stats?.avg_distance_per_week?.length > 0 && (
         <AverageDistanceChart data={stats.avg_distance_per_week} />
+      )}
+
+      {stats?.trips_per_week?.length > 0 && (
+        <TripsPerWeekChart data={stats.trips_per_week} />
       )}
 
       <h2 className="text-xl font-semibold mb-3">Trips</h2>

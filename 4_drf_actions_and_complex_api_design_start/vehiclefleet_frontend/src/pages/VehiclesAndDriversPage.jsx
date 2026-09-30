@@ -3,13 +3,17 @@ import VehicleList from '../components/VehicleList'
 import DriverList from '../components/DriverList'
 import { useVehicles } from '../hooks/useVehicles'
 import { useDrivers } from '../hooks/useDrivers'
+import { useDebounce } from '../hooks/useDebounce'
 
 function VehiclesAndDriversPage() {
   const [vehicleSearch, setVehicleSearch] = useState("")
-  const [driverSearch, setDriverSearch] = useState("")
+  const vehicleDebounceSearch = useDebounce(vehicleSearch)
 
-  const { vehicles, isLoading: loadingVehicles } = useVehicles(vehicleSearch)
-  const { drivers, isLoading: loadingDrivers } = useDrivers(driverSearch)
+  const [driverSearch, setDriverSearch] = useState("")
+  const driverDebounceSearch = useDebounce(driverSearch)
+
+  const { vehicles, isLoading: loadingVehicles } = useVehicles(vehicleDebounceSearch)
+  const { drivers, isLoading: loadingDrivers } = useDrivers(driverDebounceSearch)
 
   return (
     <div className="flex flex-col gap-8">

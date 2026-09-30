@@ -35,6 +35,16 @@ class FleetStatsView(APIView):
             .values_list("week", "avg_distance")
         )
 
+        trips_per_week = list(
+            Trip.objects
+            .filter(start_time__gte=six_months_ago)
+            .annotate(week=TruncWeek("start_time"))
+            .values("week")
+            .annotate(total_trips=Count("id"))
+            .order_by("week")
+            .values_list("week", "total_trips")
+        )
+
         return Response({
             "total_vehicles": Vehicle.objects.count(),
             "total_drivers": Driver.objects.count(),
@@ -46,7 +56,14 @@ class FleetStatsView(APIView):
                     "avg_distance": round(float(avg_dist), 2), 
                 }
                 for week, avg_dist in weekly_avg_distance
-            ]
+            ],
+            "trips_per_week": [
+                {
+                    "week": week.strftime("%Y-%m-%d"),
+                    "total_trips": total_trips,
+                }
+                for week, total_trips in trips_per_week
+            ],
         })
 
 
