@@ -1,7 +1,7 @@
 import { CartesianGrid, Line, LineChart, ResponsiveContainer, XAxis, YAxis, Tooltip } from "recharts"
 import { formatWeek } from "../utils/dateUtils"
 
-function TripsPerWeekChart({ data = []}) {
+function TripsPerWeekChart({ data = [] }) {
     const chartData = data.map((entry) => ({
         week: formatWeek(entry.week),
         total_trips: entry.total_trips,

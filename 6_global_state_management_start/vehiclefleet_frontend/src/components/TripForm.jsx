@@ -38,8 +38,7 @@ function TripForm({ vehicles, drivers, onSubmit }) {
               name="vehicle"
               value={form.vehicle}
               onChange={handleChange}
-              className="select select-bordered w-full"
-              required
+              className="select select-bordered w-full" 
             >
               <option value="" disabled>Select a vehicle</option>
               {vehicles.map((v) => (

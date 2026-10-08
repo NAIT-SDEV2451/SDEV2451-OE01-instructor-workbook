@@ -1,8 +1,11 @@
+import { useEffect, useState } from 'react' 
 import TripList from '../components/TripList'
 import StatCard from '../components/StatCard'
 import AverageDistanceChart from '../components/AverageDistanceChart'
 import { useTrips } from '../hooks/useTrips'
 import { useStats } from '../hooks/useStats'
+import { usePagination } from '../hooks/usePagination'
+import TripsPagination from '../components/TripsPagination'
 
 const STAT_CARDS = [
   { key: 'total_vehicles',    label: 'Total Vehicles',        color: 'bg-primary text-primary-content' },
@@ -12,8 +15,13 @@ const STAT_CARDS = [
 ]
 
 function TripsPage() {
-  const { trips, isLoading } = useTrips()
+  const { page, setTotalCount, pSize, setPSize } = usePagination()
+  const { trips, isLoading } = useTrips(page, pSize)
   const { stats } = useStats()
+
+  useEffect(() => {
+    if (trips.count !== undefined) setTotalCount(trips.count)
+  }, [trips.count, setTotalCount])
 
   return (
     <div className="flex flex-col gap-6">
@@ -29,10 +37,16 @@ function TripsPage() {
 
       <div>
         <h2 className="text-xl font-semibold mb-3">Trips</h2>
+        <select className="input w-full select" value={pSize} onChange={(e) => setPSize(e.target.value)}>
+          <option value="5">5</option>
+          <option value="10">10</option>
+          <option value="25">25</option>
+        </select>
         {isLoading
           ? <span className="loading loading-spinner loading-md" />
-          : <TripList trips={trips} />
+          : <TripList trips={trips.results} />
         }
+        <TripsPagination />
       </div>
     </div>
   )

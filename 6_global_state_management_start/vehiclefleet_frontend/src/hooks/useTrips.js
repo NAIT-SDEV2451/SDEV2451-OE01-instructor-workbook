@@ -1,14 +1,21 @@
+import { useEffect } from 'react'
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query'
 import { fetchTrips, createTrip } from '../api/fleet'
 
-export function useTrips() {
+export function useTrips(page = 1, pageSize = 5) {
+  const queryClient = useQueryClient()
+
   const { data, isLoading, isError, error } = useQuery({
     queryKey: ['trips'],
-    queryFn: fetchTrips,
+    queryFn: () => fetchTrips(page, pageSize),
   })
 
+  useEffect(() => {
+    queryClient.invalidateQueries({ queryKey: ['trips']})
+  }, [page, pageSize])
+
   return {
-    trips: data ?? [],
+    trips: data ?? { results: [], count: 0 },
     isLoading,
     isError,
     error,

@@ -12,7 +12,7 @@ function VehiclesAndDriversPage() {
   const [driverSearch, setDriverSearch] = useState("")
   const driverDebounceSearch = useDebounce(driverSearch)
 
-  const { vehicles, isLoading: loadingVehicles } = useVehicles(vehicleDebounceSearch)
+  const { vehicles, isLoading: loadingVehicles } = useVehicles(vehicleSearch)
   const { drivers, isLoading: loadingDrivers } = useDrivers(driverDebounceSearch)
 
   return (
