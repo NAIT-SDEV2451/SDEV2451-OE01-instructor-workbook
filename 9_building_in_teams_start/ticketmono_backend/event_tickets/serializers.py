@@ -44,4 +44,4 @@ class CreateNewOrderSerializer(serializers.Serializer):
 class OrderSerializer(serializers.ModelSerializer):
     class Meta:
         model = Order
-        filds = ("id", "customer", "tickets", "created_at")
+        fields = ("id", "customer", "tickets", "created_at")
