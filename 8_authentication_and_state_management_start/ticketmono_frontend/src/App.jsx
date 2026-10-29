@@ -10,29 +10,32 @@ import EventsListPage from './pages/attendee/EventsListPage'
 import EventDetailPage from './pages/attendee/EventDetailPage'
 import SelectTicketsPage from './pages/attendee/SelectTicketsPage'
 import CheckoutPage from './pages/attendee/CheckoutPage'
+import { CartProvider } from './contexts/CartContext'
 
 const queryClient = new QueryClient()
 
 function App() {
   return (
     <QueryClientProvider client={queryClient}>
-    <AuthProvider>
-    <BrowserRouter>
-      <div className="min-h-screen bg-base-200">
-        <Navbar />
-        <main className="p-6 max-w-5xl mx-auto">
-          <Routes>
-            <Route path="/" element={<EventsListPage />} />
-            <Route path="/login" element={<LoginPage />} />
-            <Route path="/register" element={<RegisterPage />} />
-            <Route path="/events/:id" element={<EventDetailPage />} />
-            <Route path="/events/:id/tickets" element={<ProtectedRoute><SelectTicketsPage /></ProtectedRoute>} />
-            <Route path="/checkout" element={<ProtectedRoute><CheckoutPage /></ProtectedRoute>} />
-          </Routes>
-        </main>
-      </div>
-    </BrowserRouter>
-    </AuthProvider>
+      <AuthProvider>
+        <CartProvider>
+          <BrowserRouter>
+            <div className="min-h-screen bg-base-200">
+              <Navbar />
+              <main className="p-6 max-w-5xl mx-auto">
+                <Routes>
+                  <Route path="/" element={<ProtectedRoute><EventsListPage /></ProtectedRoute>} />
+                  <Route path="/login" element={<LoginPage />} />
+                  <Route path="/register" element={<RegisterPage />} />
+                  <Route path="/events/:id" element={<ProtectedRoute><EventDetailPage /></ProtectedRoute>} />
+                  <Route path="/events/:id/tickets" element={<ProtectedRoute><SelectTicketsPage /></ProtectedRoute>} />
+                  <Route path="/checkout" element={<ProtectedRoute><CheckoutPage /></ProtectedRoute>} />
+                </Routes>
+              </main>
+            </div>
+          </BrowserRouter>
+        </CartProvider>
+      </AuthProvider>
     </QueryClientProvider>
   )
 }
