@@ -1,8 +1,9 @@
-from rest_framework import viewsets
+from rest_framework import status, viewsets
+from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated
 
-from .models import Event
-from .serializers import EventListReadOnlySerializer
+from .models import Event, Order, TicketTier, Ticket
+from .serializers import EventListReadOnlySerializer, OrderSerializer, CreateNewOrderSerializer
 
 
 class EventViewSet(viewsets.ModelViewSet):
@@ -15,3 +16,26 @@ class EventViewSet(viewsets.ModelViewSet):
         if self.action == "list":
             return EventListReadOnlySerializer
         return EventListReadOnlySerializer
+
+
+class OrderViewSet(viewsets.ModelViewSet):
+    serializer_class = OrderSerializer
+    permission_classes = (IsAuthenticated,)
+
+    def get_queryset(self):
+        return Order.objects.filter(cutsomer=self.request.user)
+
+    def create(self, request, *args, **kwargs):
+        serializer = CreateNewOrderSerializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+
+        tickets = []
+        for item in serializer.validated_data["items"]:
+            tier = TicketTier.objects.get(id=item["ticket_tier_id"])
+            for _ in range(item["quantity"]):
+                tickets.append(Ticket.objects.create(tier=tier))
+
+        order = Order.objects.create(customer=request.user)
+        order.tickets.set(tickets)
+
+        return Response(OrderSerializer(order).data, status=status.HTTP_201_CREATED)
