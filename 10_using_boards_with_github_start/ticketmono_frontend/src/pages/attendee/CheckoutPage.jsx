@@ -31,6 +31,7 @@ function CheckoutPage() {
   return (
     <div className="max-w-2xl mx-auto px-4 py-8">
       <h1 className="text-2xl font-bold mb-6">Checkout</h1>
+      <h2>THANKS FOR THIS TICKET THING</h2>
       {cartItems.length === 0 ? (
         <p className="text-base-content/60">Your cart is empty.</p>
       ) : (
