@@ -1,7 +1,7 @@
 from django.contrib.auth import get_user_model
 from rest_framework import serializers
 
-from .models import Event, TicketTier, Venue
+from .models import Event, TicketTier, Venue, Order
 
 User = get_user_model()
 
@@ -32,3 +32,16 @@ class EventListReadOnlySerializer(serializers.ModelSerializer):
     class Meta:
         model = Event
         fields = ("id", "name", "date_time", "venue", "organizer", "ticket_tiers")
+
+class CreateNewOrderItemSerializer(serializers.Serializer):
+    event_id = serializers.IntegerField()
+    ticket_tier_id = serializers.IntegerField()
+    quantity = serializers.IntegerField(min_value=1)
+
+class CreateNewOrderSerializer(serializers.Serializer):
+    items = CreateNewOrderItemSerializer(many=True)
+
+class OrderSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Order
+        fields = ("id", "customer", "tickets", "created_at")
