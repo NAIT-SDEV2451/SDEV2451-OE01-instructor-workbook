@@ -35,6 +35,11 @@ function CheckoutPage() {
             <span>Total</span>
             <span>${grandTotal.toFixed(2)}</span>
           </div>
+          <div className="mt-6">
+            <button className="btn btn-primary w-full">
+              Place Order
+            </button>
+          </div>
         </div>
       )}
     </div>
