@@ -1,0 +1,34 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-settings.json",
+  "permissions": {
+    "defaultMode": "default",
+    "allow": [
+      "Bash(python manage.py test *)",
+      "Bash(coverage run *)",
+      "Bash(coverage report *)",
+      "Bash(coverage html *)",
+      "Bash(npm run test:run *)",
+      "Bash(npm run lint *)",
+      "PowerShell(python manage.py test *)",
+      "PowerShell(coverage run *)",
+      "PowerShell(coverage report *)",
+      "PowerShell(coverage html *)",
+      "PowerShell(npm run test:run *)",
+      "PowerShell(npm run lint *)"
+    ],
+    "ask": [
+      "Bash(git commit *)",
+      "Bash(git push *)",
+      "Bash(pip install *)",
+      "Bash(npm install *)",
+      "PowerShell(git commit *)",
+      "PowerShell(git push *)",
+      "PowerShell(pip install *)",
+      "PowerShell(npm install *)"
+    ],
+    "deny": [
+      "Read(./**/.env)",
+      "Read(./**/.env.*)"
+    ]
+  }
+}
